@@ -1,5 +1,8 @@
 <nav class="menu"> 
         <ul> 
+            <li class=element_menu>
+                <h4>Menu:<h4>
+            </li> 
             <li class=element_menu id="selected">
                 <a href="index.php">Accueil</a>
             </li> 
