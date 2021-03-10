@@ -8,22 +8,9 @@
     </head>
     <body>
         <h1 align="center">Curriculum vitae</h1> 
-        <nav class="menu"> 
-            <ul> 
-                <li class=element_menu>
-                    <a href="index.php"">Accueil</a>
-                </li> 
-                <li class=element_menu id="selected">
-                    <a href="cv.php"">CV</a>
-                </li> 
-                <li class=element_menu>
-                    <a href="projets.php"">Projets</a>
-                </li>
-                <li class=element_menu>
-                    <a href="conseilspro.php"">Conseils pro</a>
-                </li> 
-            </ul> 
-            </nav>
+        <?php
+        require_once('template_menu.php');
+        ?>
     
         <div class="presentation">
             <div align="center"><img src="pictures\cv.png" width=300></div>

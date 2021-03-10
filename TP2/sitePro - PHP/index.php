@@ -26,22 +26,9 @@
             </tr>
 
         </table>
-        <nav class="menu"> 
-        <ul> 
-            <li class=element_menu id="selected">
-                <a href="index.php">Accueil</a>
-            </li> 
-            <li class=element_menu>
-                <a href="cv.php">CV</a>
-            </li> 
-            <li class=element_menu>
-                <a href="projets.php">Projets</a>
-            </li>
-            <li class=element_menu>
-                <a href="conseilspro.php">Conseils pro</a>
-            </li> 
-        </ul> 
-        </nav>
+        <?php
+        require_once('template_menu.php');
+        ?>
         <h3>Accueil</h3>
         <img src="pictures\01.jpg">
         <?php
