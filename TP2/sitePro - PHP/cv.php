@@ -10,6 +10,7 @@
         <h1 align="center">Curriculum vitae</h1> 
         <?php
         require_once('template_menu.php');
+        renderMenuToHTML('cv');
         ?>
     
         <div class="presentation">

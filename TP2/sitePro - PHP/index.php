@@ -28,6 +28,7 @@
         </table>
         <?php
         require_once('template_menu.php');
+        renderMenuToHTML('index');
         ?>
         <h3>Accueil</h3>
         <img src="pictures\01.jpg">

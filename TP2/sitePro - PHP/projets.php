@@ -7,8 +7,9 @@
         <title>Projets</title>
     </head>
     <body> 
-        <?php
+    <?php
         require_once('template_menu.php');
+        renderMenuToHTML('projets');
         ?>
                 <table align="center">
                     <td>

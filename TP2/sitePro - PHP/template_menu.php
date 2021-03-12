@@ -1,19 +1,26 @@
-<nav class="menu"> 
-        <ul> 
-            <li class=element_menu>
-                <h4>Menu:<h4>
-            </li> 
-            <li class=element_menu id="selected">
-                <a href="index.php">Accueil</a>
-            </li> 
-            <li class=element_menu>
-                <a href="cv.php">CV</a>
-            </li> 
-            <li class=element_menu>
-                <a href="projets.php">Projets</a>
-            </li>
-            <li class=element_menu>
-                <a href="conseilspro.php">Conseils pro</a>
-            </li> 
-        </ul> 
-</nav>
+<?php
+function renderMenuToHTML($currentPageId) {
+// un tableau qui d\'efinit la structure du site
+$mymenu = array(
+// idPage titre
+'index' => array( 'Accueil' ),
+'cv' => array( 'Cv' ),
+'projets' => array('Mes Projets'),
+'conseilspro' => array('Conseils Pro')
+);
+echo 
+    "<nav class=\"menu\">
+    <ul>
+        ";
+foreach($mymenu as $pageId => $pageParameters) {
+    if ($pageId == $currentPageId){
+        $id=" id='active'";
+    }
+    else{
+        $id="";
+    }
+
+    echo ' <li class="element_menu"><a href= '.$pageId.'.php>'.$pageParameters[0].'</a></li>';
+        
+    }
+    echo '</ul></nav>'; } ?>

@@ -8,8 +8,9 @@
         <title>Conseils</title>
     </head>
     <body>
-        <?php
+    <?php
         require_once('template_menu.php');
+        renderMenuToHTML('conseilspro');
         ?>
                 <table align="center">
                     <td>
