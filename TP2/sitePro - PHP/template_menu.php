@@ -6,7 +6,8 @@ $mymenu = array(
 'index' => array( 'Accueil' ),
 'cv' => array( 'Cv' ),
 'projets' => array('Mes Projets'),
-'conseilspro' => array('Conseils Pro')
+'conseilspro' => array('Conseils Pro'),
+'contact' => array('Contacts'),
 );
 echo 
     "<nav class=\"menu\">
