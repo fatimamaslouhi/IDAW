@@ -1,27 +1,54 @@
 <?php
-function renderMenuToHTML($currentPageId) {
+function renderMenuToHTML($currentPageId , $currentLanguage) {
 // un tableau qui d\'efinit la structure du site
-$mymenu = array(
+$mymenufr = array(
 // idPage titre
-'index' => array( 'Accueil' ),
+'accueil' => array( 'Accueil' ),
 'cv' => array( 'Cv' ),
 'projets' => array('Mes Projets'),
 'conseilspro' => array('Conseils Pro'),
 'contact' => array('Contacts'),
 );
+$mymenuen = array(
+    // idPage titre
+    'accueil' => array( 'Home' ),
+    'cv' => array( 'Cv' ),
+    'projets' => array('Projects'),
+    'conseilspro' => array('Tips & advices'),
+    'contact' => array('Contacts'),
+    );
 echo 
     "<nav class=\"menu\">
     <ul>
         ";
-foreach($mymenu as $pageId => $pageParameters) {
-    if ($pageId == $currentPageId){
-        $id=" id='active'";
-    }
-    else{
-        $id="";
-    }
+if($currentLanguage=='fr')
+{
+    foreach($mymenufr as $pageId => $pageParameters) {
+        if ($pageId == $currentPageId){
+            $id=" id='active'";
+        }
+        else{
+            $id="";
+        }
 
-    echo ' <li class="element_menu"><a href= '.$pageId.'.php>'.$pageParameters[0].'</a></li>';
+        echo ' <li class="element_menu"><a href= fr/'.$pageId.'.php>'.$pageParameters[0].'</a></li>';
+            
+        }
+    echo '</ul></nav>'; } 
+if($currentLanguage=='en')
+    {
+        foreach($mymenuen as $pageId => $pageParameters) {
+            if ($pageId == $currentPageId){
+                $id=" id='active'";
+            }
+            else{
+                $id="";
+            }
+    
+            echo ' <li class="element_menu"><a href= en/'.$pageId.'.php>'.$pageParameters[0].'</a></li>';
+                
+            }
+        echo '</ul></nav>'; } 
         
-    }
-    echo '</ul></nav>'; } ?>
+        
+    }?>

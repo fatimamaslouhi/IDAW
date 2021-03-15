@@ -1,26 +1,3 @@
-<?php
-require_once("template_header.php");
-require_once("template_menu.php");
-$currentPageId = 'projets';
-if(isset($_GET['page'])) {
-$currentPageId = $_GET['page'];
-}
-?>
-<header class="bandeau_haut">
-<h1 class="titre">FM</h1>
-</header>
-<?php
-renderMenuToHTML($currentPageId);
-?>
-<section class="corps">
-<?php
-$pageToInclude = $currentPageId . ".php";
-if(is_readable($pageToInclude))
-require_once($pageToInclude);
-else
-require_once("error.php");
-?>
-</section>
 <!DOCTYPE html>
 <html>
     <head>
@@ -58,10 +35,8 @@ require_once("error.php");
                     </tr>
 
                 </table>
+                <a href="index.php?page=projets&lang=en">Anglais</a>
     
-                <?php
-                   include("template_footer.php");
-                ?>
     </body>
 
 </html>

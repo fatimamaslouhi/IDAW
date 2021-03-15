@@ -1,10 +1,7 @@
-<?php
-    require_once('template_header.php');
-?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Site professionnel - Accueil</title>
+        <title>Professional website - Home</title>
     </head>
     <body>
         <table align="center">
@@ -16,25 +13,23 @@
             </tr>
             <tr>
                 <th>
-                    <h2 align="center">Bienvenue - Page d'accueil</h2>
+                    <h2 align="center">Welcome - Home </h2>
                 </th>
             </tr>
             <tr>
                 <td>
-                    <b><i>Notre site web contient plusieurs fonctionalités liées au monde professionnel, il est sous votre disposition.</i></b>
+                    <b><i>Our website contains several functionalities related to the professional world, it is at your disposal.</i></b>
                 </td>
             </tr>
 
         </table>
         <?php
         require_once('template_menu.php');
-        renderMenuToHTML('index');
+        renderMenuToHTML('accueil');
         ?>
         <h3>Accueil</h3>
         <img src="pictures\01.jpg">
-        <?php
-            include("template_footer.php");
-        ?>
+        <a href="index.php?page=accueil&lang=fr">French</a>
     </body>
 </html>
  

@@ -1,26 +1,3 @@
-<?php
-require_once("template_header.php");
-require_once("template_menu.php");
-$currentPageId = 'conseilspro';
-if(isset($_GET['page'])) {
-$currentPageId = $_GET['page'];
-}
-?>
-<header class="bandeau_haut">
-<h1 class="titre">FM</h1>
-</header>
-<?php
-renderMenuToHTML($currentPageId);
-?>
-<section class="corps">
-<?php
-$pageToInclude = $currentPageId . ".php";
-if(is_readable($pageToInclude))
-require_once($pageToInclude);
-else
-require_once("error.php");
-?>
-</section>
 <!DOCTYPE html>
 <html>
     <head>
@@ -61,9 +38,7 @@ require_once("error.php");
                 C’est très important. D&eacute;velopper le web, d’accord ; mais vous n’y parviendrez pas sans avoir un esprit d’analyse aussi développé. Un travail lié au codage et à la programmation doit suivre une certaine logique. Pour cela, vous devez sans cesse essayer différentes formules, demander à ce qu’on critique votre travail. Ainsi, vous aurez de la matière pour réussir en tant que développeur web. Vous devez aussi adorer les situations complexes, qui demandent plus de réflexions. Cela boostera aussi votre esprit d’analyse et votre créativité.
             </p>
         </div>
-        <?php
-            include("template_footer.php");
-        ?>
+        <a href="index.php?page=conseilspro&lang=en">Anglais</a>
     </body>
 
 </html>
