@@ -19,7 +19,7 @@
             if($mysqli->connect_error){
                 die('Erreur : ' .$mysqli->connect_error);
             }
-            echo 'Connexion réussie';
+            #echo 'Connexion réussie';
 
             $result = $mysqli->query('SELECT id,pseudo FROM connexion;') ;
 
@@ -38,8 +38,7 @@
             $result->free() ;
             
             $result = $mysqli->query('INSERT INTO connexion(`id`, `login`, `password`, `pseudo`) 
-            VALUES (5,\'jacques.roux\',\'pswd5\',\'Jacques Roux\');');
-            $result->free() ;
+            VALUES (6,\'jacqueline.roix\',\'pswd6\',\'Jacqueline Roix\');');
             $mysqli->close() ;
         ?>
     </body>
