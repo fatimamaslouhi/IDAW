@@ -7,8 +7,12 @@
     <body>
         <h1>Inscription</h1>  
         
-            <form id="login_inscrption" action ="ajout_BDD.php" method="POST">
+            <form id="login_inscrption" method="POST" action ="ajout_BDD.php" >
             <table>
+            <tr>
+            <th>Id :</th>
+            <td><input type="text" name="id"></td>
+            </tr>
             <tr>
             <th>Login :</th>
             <td><input type="text" name="login"></td>

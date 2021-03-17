@@ -38,7 +38,7 @@
             $result->free() ;
             
             $result = $mysqli->query('INSERT INTO connexion(`id`, `login`, `password`, `pseudo`) 
-            VALUES (6,\'jacqueline.roix\',\'pswd6\',\'Jacqueline Roix\');');
+            VALUES (8,\'hugo.levonte\',\'pswd8\',\'Hugo Levonte\');');
             $mysqli->close() ;
         ?>
     </body>
