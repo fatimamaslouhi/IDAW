@@ -1,3 +1,6 @@
+<!doctype html>
+<html>
+<body>
 <form id="login_form" action="connected.php" method="GET">
 <table>
 <tr>
@@ -21,3 +24,6 @@
 </select>
 <input type="submit" value="Appliquer" />
 </form>
+
+</body>
+</html>
