@@ -1,145 +1,104 @@
-<!DOCTYPE html>
-<html>
-   <head>
-      <meta charset="utf-8">
-      <title>Exo CRUD</title>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-   </head>
-   <body>
-    <div class="container" id="content">
-       <br><br>
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset='utf-8'>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+<title>Exo CRUD</title>
+<style>
+body{ margin-top: 5em; }
+.table {
+margin-top: 100px;
+margin-bottom: 100px;
+}
+</style>
+</head>
+<body>
        <button class="btn btn-outline-primary" id="form-add">Ajouter un &eacute;tudiant</button>
-       <br><br> 
-        <table class="table table-striped" id="tableau">
-           <thead>
-              <tr>
-                 <th>Nom</th>
-                 <th>Pr&eacute;nom</th>
-                 <th>Date de naissance</th>
-                 <th>Aime le cours</th>
-                 <th>Remarque</th>
-                 <th>CRUD</th>
-              </tr>
-           </thead>
-            <tr>
-                <td>MASLOUHI</td>
-                <td>Fatima</td>
-                <td>24/05/1998</td>
-                <td>Oui</td>
-                <td>RAS</td>
-                <td><button type="submit" class="btn btn-primary">Modifier</button>
-                    <button type="submit" class="btn btn-danger">Supprimer</button></td>
-            </tr>
-           <tbody>
-           </tbody>
-        </table>
-     </div>
-      <div class="container-fluid mt-3">
-         <form id ="form" onsubmit="onFormSubmit()" autocomplete="off">
-            <h4 class="mb-2">Formulaire d'ajout</h4>
-            <div class="form-row">
-               <div class="form-group col-sm-6">
-                  <label id="nom">Nom : * </label>
-                  <input type="text" class="form-control"
-                     id="nom" placeholder="Nom">
-               </div>
-               <div class="form-group col-sm-6">
-                <label for="prenom">Pr&eacute;nom : * </label>
-                <input type="text" class="form-control"
-                   id="prenom" placeholder="Prenom">
-             </div>  
-            </div>
-            <div class="form-group">
-                <label for="prenom">Date de naissance : </label>
-                <input type="date" id="myDate" class="form-control">
-             </div>
-            <div class="form-group">
-               <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="myCheck">
-                  <label class="form-check-label" for="myCheck">
-                    Aime le cours
-                  </label>
-               </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-sm-6">
-                   <label for="remarques">Remarques : </label>
-                   <input type="text" class="form-control"
-                      id="remarques" placeholder="Remarques">
-                </div> 
-             </div>
-            <button type="submit" class="btn btn-success" id="form-save">Valider</button>
-         </form>
-      </div>
-      <script>
-        const form = document.getElementById("form");
-        form.style.display = "none";
-        const content = document.getElementById("content");
-        document.getElementById("form-add").addEventListener("click", function() {
-            displayForm();
-        });
-        function displayForm() {
-                form.style.display = "block";
-                //content.style.display = "none";
-                    }
-      </script>
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-      <script>
-     
-       /** function onFormSubmit() {
-            
-            const elContent = document.getElementById("content");
-        prevent the form to be sent to the server
-        event.preventDefault();
-        const form = document.getElementById("form");
-        form.style.display = "none";
-        //const content = document.getElementById("content");
-
-        document.getElementById("form-add").addEventListener("click", function() {
+<table class="table">
+<thead>
+<tr>
+<th scope="col">Nom</th>
+<th scope="col">Prenom</th>
+<th scope="col">Date de naissance</th>
+<th scope="col">Aime le cours Web</th>
+<th scope="col">Remarques</th>
+<th scope="col">CRUD</th>
+</tr>
+</thead>
+<tbody id="studentsTableBody">
+</tbody>
+</table>
+<form id="addStudentForm" action="" onsubmit="onFormSubmit();">
+<div class="form-group row">
+<label for="inputNom" class="col-sm-2 col-form-label" required>Nom* : </label>
+<div class="col-sm-3">
+<input type="text" class="form-control" id="inputNom" >
+</div>
+</div>
+<div class="form-group row">
+<label for="inputNom" class="col-sm-2 col-form-label">Pr&eacute;nom* : </label>
+<div class="col-sm-3">
+<input type="text" class="form-control" id="inputPrenom" >
+</div>
+</div>
+<div class="form-group row">
+    <label for="prenom">Date de naissance : </label>
+    <input type="date" id="inputDate" class="form-control">
+ </div>
+</div>
+</div>
+<div class="form-group">
+    <div class="form-check">
+       <input class="form-check-input" type="checkbox" id="inputCours">
+       <label class="form-check-label" for="myCheck">
+         Aime le cours : 
+       </label>
+    </div>
+ </div>
+<div class="form-group row">
+<label for="inputNom" class="col-sm-2 col-form-label">Remarques : </label>
+<div class="col-sm-3">
+<input type="text" class="form-control" id="inputRemarques" >
+</div>
+</div>
+<div class="form-group row">
+<span class="col-sm-2"></span>
+<div class="col-sm-2">
+<button type="submit" class="btn btn-success">Valider</button>
+</div>
+</div>
+</form>
+<script>
+    const form = document.getElementById("addStudentForm");
+    form.style.display = "none";
+    const content = document.getElementById("content");
+    document.getElementById("form-add").addEventListener("click", function() {
         displayForm();
-        });**/
-        /** var tableau = document.getElementById("tableau");
-
-        var ligne = tableau.insertRow(-1);//on a ajouté une ligne
-
-        var colonne1 = ligne.insertCell(0);//on a une ajouté une cellule
-        colonne1.innerHTML += document.getElementById("nom").value;//on y met le contenu de titre
-
-        var colonne2 = ligne.insertCell(1);//on ajoute la seconde cellule
-        colonne2.innerHTML += document.getElementById("prenom").value;
-
- 
-        var date = new Date();
-	    var colonne3 = ligne.insertCell(2);
-	    colonne3.innerHTML += date.getDate();
-        colonne3.innerHTML += date.getMonth()+1;
-        colonne3.innerHTML += date.getFullYear();
-       
-        var colonne4 = ligne.insertCell(3);
-	    colonne4.innerHTML += date.getMonth()+1;//les mois commencent par 0
-
-	    var colonne5 = ligne.insertCell(4);
-	    colonne5.innerHTML += date.getFullYear();
-
-        var colonne5 = ligne.insertCell(4);//on a une ajouté une cellule
-        colonne5.innerHTML += document.getElementById("remarques").value;//on y met le contenu de titre **/
-
-        document.getElementById("form-save").addEventListener("click", function() {
-        // Récupération des champs
-        nom = document.getElementById("nom").value;
-        prenom = document.getElementById("prenom").value;
-        const tbody = document.getElementsByTagName("tbody")[0];
-        tbody.innerHTML = "";
-        let data = "";
-        data += `<tr>
-            <td>${nom}</td>
-            <td>prenom</td>
-                </tr>`;
-        tbody.innerHTML += data;
-    
-            }
-    </script>
-   </body>
+    });
+    function displayForm() {
+            form.style.display = "block";
+            //content.style.display = "none";
+                }
+</script>
+<script>
+function onFormSubmit() {
+// prevent the form to be sent to the server
+event.preventDefault();
+let nom = $("#inputNom").val();
+let prenom = $("#inputPrenom").val();
+let date = $("#inputDate").val();
+let remarques = $("#inputRemarques").val();
+var checkbox= document.getElementById("inputCours").checked;
+if(checkbox ==true)
+{
+    cours = "Oui";
+}
+else cours = "Non";
+$("#studentsTableBody").append(`<tr><td>${nom}</td><td>${prenom}</td><td>${date}</td><td>${cours}</td><td>${remarques}</td><td><button type="submit" class="btn btn-primary">Modifier</button>
+                    <button type="submit" class="btn btn-danger">Supprimer</button></td></tr>`);
+}
+</script>
+</body>
 </html>
