@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset='utf-8'>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <title>
+        TP4 CRUD 
+    </title>
+    <style>
+        body{ margin-top: 5em; }
+        .table {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        }
+    </style>
+<body>
+    <button class="btn btn-outline-primary" id="form-add">Ajouter un &eacute;tudiant</button>
+    <table class="table">
+        <tr>
+            <td>
+                <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                    <div>
+                        <label class="col-sm-2 col-form-label" required>Nom</label><label class="validation-error hide" id="NomValidationError">*</label>
+                        <input type="text" class="form-control" name="Nom" id="Nom">
+                    </div>
+                    <div>
+                        <label class="col-sm-2 col-form-label">Pr&eacute;nom</label>
+                        <input type="text" class="form-control" name="Prenom" id="Prenom">
+                    </div>
+                    <div>
+                        <label class="col-form-label">Date de naissance</label>
+                        <input type="date" id="date" class="form-control">
+                     </div>
+                    <div>
+                        <label class="form-check-label" for="myCheck">
+                            Aime le cours : 
+                        </label>
+                        <input class="col-sm-2  form-check-input" type="checkbox" id="cours">
+                    </div>
+                    <div>
+                        <label class="col-sm-2 col-form-label">Remarques</label>
+                        <input type="text" class="form-control" name="remarques" id="remarques">
+                    </div>
+                    <br>
+                    <div class="form-action-buttons">
+                        <button type="submit" class="btn btn-success">Valider</button>
+                        </div>
+                </form>
+            </td>
+            <td>
+                <table class="list" id="List">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prenom</th>
+                            <th scope="col">Date de naissance</th>
+                            <th scope="col">Aime le cours Web</th>
+                            <th scope="col">Remarques</th>
+                            <th scope="col">CRUD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+
+<script>
+    var selectedRow = null
+
+function onFormSubmit() {
+    if (validate()) {
+        var formData = readFormData();
+        if (selectedRow == null)
+            insertNewRecord(formData);
+        else
+            updateRecord(formData);
+        resetForm();
+    }
+}
+
+function readFormData() {
+    var formData = {};
+    formData["Nom"] = document.getElementById("Nom").value;
+    formData["Prenom"] = document.getElementById("Prenom").value;
+    formData["date"] = document.getElementById("date").value;
+    formData["cours"] = document.getElementById("cours").checked;
+    formData["remarques"] = document.getElementById("remarques").value;
+    return formData;
+}
+
+function insertNewRecord(data) {
+    var table = document.getElementById("List").getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.length);
+    cell1 = newRow.insertCell(0);
+    cell1.innerHTML = data.Nom;
+    cell2 = newRow.insertCell(1);
+    cell2.innerHTML = data.Prenom;
+    cell3 = newRow.insertCell(2);
+    cell3.innerHTML = data.date;
+    cell4 = newRow.insertCell(3);
+    cell4.innerHTML = data.cours;
+    cell5 = newRow.insertCell(4);
+    cell5.innerHTML = data.remarques;
+    cell6 = newRow.insertCell(5);
+    cell6.innerHTML = `<button type="submit" class="btn btn-primary" onclick="onEdit(this)">Modifier</button>
+                    <button type="submit" class="btn btn-danger" onclick="onDelete(this)">Supprimer</button>`;
+}
+
+function resetForm() {
+    document.getElementById("Nom").value = "";
+    document.getElementById("Prenom").value = "";
+    document.getElementById("date").value = "";
+    document.getElementById("cours").value = "";
+    document.getElementById("remarques").value = "";
+    selectedRow = null;
+}
+
+function onEdit(td) {
+    selectedRow = td.parentElement.parentElement;
+    document.getElementById("Nom").value = selectedRow.cells[0].innerHTML;
+    document.getElementById("Prenom").value = selectedRow.cells[1].innerHTML;
+    document.getElementById("date").value = selectedRow.cells[2].innerHTML;
+    document.getElementById("cours").value = selectedRow.cells[3].innerHTML;
+    document.getElementById("remarques").value = selectedRow.cells[4].innerHTML;
+}
+function updateRecord(formData) {
+    selectedRow.cells[0].innerHTML = formData.Nom;
+    selectedRow.cells[1].innerHTML = formData.Prenom;
+    selectedRow.cells[2].innerHTML = formData.date;
+    selectedRow.cells[3].innerHTML = formData.cours;
+    selectedRow.cells[4].innerHTML = formData.remarques;
+}
+
+function onDelete(td) {
+    if (confirm('Are you sure to delete this record ?')) {
+        row = td.parentElement.parentElement;
+        document.getElementById("List").deleteRow(row.rowIndex);
+        resetForm();
+    }
+}
+function validate() {
+    isValid = true;
+    if (document.getElementById("Nom").value == "") {
+        isValid = false;
+        document.getElementById("NomValidationError").classList.remove("hide");
+    } else {
+        isValid = true;
+        if (!document.getElementById("NomValidationError").classList.contains("hide"))
+            document.getElementById("NomValidationError").classList.add("hide");
+    }
+    return isValid;
+}
+</script>
+</body>
+
+</html>

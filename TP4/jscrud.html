@@ -96,8 +96,32 @@ if(checkbox ==true)
     cours = "Oui";
 }
 else cours = "Non";
-$("#studentsTableBody").append(`<tr><td>${nom}</td><td>${prenom}</td><td>${date}</td><td>${cours}</td><td>${remarques}</td><td><button type="submit" class="btn btn-primary">Modifier</button>
-                    <button type="submit" class="btn btn-danger">Supprimer</button></td></tr>`);
+$("#studentsTableBody").append(`< id="row" tr><td>${nom}</td><td>${prenom}</td><td>${date}</td><td>${cours}</td><td>${remarques}</td><td><button type="submit" class="btn btn-primary" onclick="readFromData()">Modifier</button>
+                    <button type="submit" class="btn btn-danger" onclick="removerow()">Supprimer</button></td></tr>`);
+}
+function removerow() {
+  var myobj = document.getElementById("row");
+  myobj.remove();
+}
+function resetForm(){
+    document.getElementById("inputNom").value="";
+    document.getElementById("inputPrenom").value="";
+    document.getElementById("inputRemarques").value="";
+    document.getElementById("inputCours").value="";
+}
+function readFromData(){
+    var formData= {} ;
+    formData["inputNom"] = document.getElementById("inputNom").value;
+    formData["inputPrenom"] = document.getElementById("inputPrenom").value;
+    formData["inputRemarques"] = document.getElementById("inputRemarques").value;
+    formData["inputCours"] = document.getElementById("inputCours").value;
+}
+function onEdit(td){
+    selectedRow = td.parentElement.parentElement;
+    document.getElementById("inputNom").value=selectedRow.cells[0].innerHTML;
+    document.getElementById("inputNom").value=selectedRow.cells[1].innerHTML;
+    document.getElementById("inputNom").value=selectedRow.cells[2].innerHTML;
+    document.getElementById("inputNom").value=selectedRow.cells[3].innerHTML;
 }
 </script>
 </body>
